@@ -11,6 +11,7 @@
 #include "RenderThread.h"
 #include "CubeGameObject.h"
 #include "GameTimer.h"
+#include "Input.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -27,6 +28,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     RenderEngine* renderEngine = new RenderEngine(hInstance);
     RenderThread* renderThread = renderEngine->GetRT();
+
+    InputHandler input_handler{"../../../Assets/Configs/actionmap.ini"};
 
     GameObject* cube = new CubeGameObject();
     renderThread->EnqueueCommand(RC_CreateCubeRenderObject, cube->GetRenderProxy());
@@ -46,10 +49,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            float t = 0;
             timer.Tick();
-            t = sin(timer.TotalTime())*2;
-            cube->SetPosition(t, 0.0f, 0.0f);
+
+            input_handler.Tick();
+
+            float pos[3];
+            cube->GetRenderProxy()->GetPosition(pos);
+
+            float t = timer.DeltaTime();
+            if (input_handler.HasHappened(Action::GoLeft))
+            {
+            	pos[0] -= t;
+            }
+            if (input_handler.HasHappened(Action::GoRight))
+            {
+            	pos[0] += t;
+            }
+            if (input_handler.HasHappened(Action::GoUp))
+            {
+            	pos[2] += t;
+            }
+            if (input_handler.HasHappened(Action::GoDown))
+            {
+            	pos[2] -= t;
+            }
+            cube->SetPosition(pos[0], pos[1], pos[2]);
 
             renderThread->OnEndFrame();
         }

@@ -29,12 +29,17 @@ private:
 		{ 1.0f,  1.0f, -1.0f, 0xffff00ff },
 		{-1.0f, -1.0f, -1.0f, 0xffffff00 },
 		{ 1.0f, -1.0f, -1.0f, 0xffffffff },
+		{ 0.0f,  0.0f,  2.0f, 0xffffffff }
 	};
 
 	inline static const uint16_t s_cubeTriList[] =
 	{
-		0, 1, 2, // 0
-		1, 3, 2,
+		// 0, 1, 2, // 0
+		// 1, 3, 2,
+		0, 8, 2,
+		1, 8, 0,
+		3, 8, 1,
+		2, 8, 3,
 		4, 6, 5, // 2
 		5, 6, 7,
 		0, 2, 4, // 4

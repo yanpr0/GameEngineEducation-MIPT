@@ -104,6 +104,11 @@ void CRenderEngine::Update()
 	bgfx::setVertexBuffer(0, m_defaultCube->GetVertexBuffer());
 	bgfx::setIndexBuffer(m_defaultCube->GetIndexBuffer());
 
+	float mtx[16];
+	bx::mtxRotateXY(mtx, m_counter * 0.01f, m_counter * 0.01f);
+	bgfx::setTransform(mtx);
+	++m_counter;
+
 	bgfx::submit(0, m_defaultCube->GetProgramHandle());
 
 	bgfx::touch(0);

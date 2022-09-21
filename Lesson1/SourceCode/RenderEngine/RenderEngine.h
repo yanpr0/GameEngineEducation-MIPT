@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "Common.h"
 #include "RenderObject.h"
 #include "DefaultGeometry/Cube.h"
@@ -20,5 +22,8 @@ private:
 
 	long m_Width = 800;
 	long m_Height = 600;
+	
+	std::uint64_t m_counter = 0;
+
 	Cube* m_defaultCube;
 };
