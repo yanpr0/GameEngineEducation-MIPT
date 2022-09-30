@@ -171,19 +171,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AutomovingCubeGameObject.h" />
+    <ClInclude Include="ControllableCubeGameObject.h" />
     <ClInclude Include="CubeGameObject.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="JumpingCubeGameObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AutomovingCubeGameObject.cpp" />
+    <ClCompile Include="ControllableCubeGameObject.cpp" />
     <ClCompile Include="CubeGameObject.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="JumpingCubeGameObject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

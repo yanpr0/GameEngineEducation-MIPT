@@ -6,12 +6,17 @@
 #include <crtdbg.h>
 #endif
 
+#include <cstdlib>
+
 #include "GameEngine.h"
 #include "RenderEngine.h"
 #include "RenderThread.h"
 #include "CubeGameObject.h"
 #include "GameTimer.h"
 #include "InputHandler.h"
+#include "JumpingCubeGameObject.h"
+#include "AutomovingCubeGameObject.h"
+#include "ControllableCubeGameObject.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -30,15 +35,32 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     RenderThread* renderThread = renderEngine->GetRT();
     InputHandler* inputHandler = new InputHandler();
 
-    GameObject* cube = new CubeGameObject();
-    renderThread->EnqueueCommand(RC_CreateCubeRenderObject, cube->GetRenderProxy());
+    const int cube_count = 100;
+    GameObject* cubes[cube_count];
+
+    for (int i = 0; i < cube_count; ++i)
+    {
+        switch (std::rand() % 3)
+        {
+        case 0: cubes[i] = new JumpingCubeGameObject(); break;
+        case 1: cubes[i] = new AutomovingCubeGameObject(); break;
+        case 2: cubes[i] = new ControllableCubeGameObject(); break;
+        default: cubes[i] = new CubeGameObject();
+        }
+
+        renderThread->EnqueueCommand(RC_CreateCubeRenderObject, cubes[i]->GetRenderProxy());
+
+        float x = 40.0f * (0.5f - static_cast<float>(rand()) / RAND_MAX);
+        float y = 40.0f * (0.5f - static_cast<float>(rand()) / RAND_MAX);
+        cubes[i]->SetPosition(x, y, 0.0f);
+    }
 
     MSG msg = { 0 };
 
     timer.Start();
     timer.Reset();
 
-    float newPositionX = 0.0f;
+    GameTickData tick_data;
 
     // Main message loop:
     while (msg.message != (WM_QUIT | WM_CLOSE))
@@ -52,17 +74,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             inputHandler->Update();
 
-            float t = 0;
             timer.Tick();
-            t = sin(timer.TotalTime())*2;
 
-            float velocity = 0.0f;
-            if (inputHandler->GetInputState().test(eIC_GoLeft))
-                velocity -= 1.0f;
-            if (inputHandler->GetInputState().test(eIC_GoRight))
-                velocity += 1.0f;
-            newPositionX += velocity * timer.DeltaTime();
-            cube->SetPosition(newPositionX, 0.0f, 0.0f);
+            tick_data.delta_time = timer.DeltaTime();
+            tick_data.total_time = timer.TotalTime();
+            tick_data.input_state = inputHandler->GetInputState();
+
+            for (auto cube : cubes)
+            {
+                cube->Update(&tick_data);
+            }
 
             renderThread->OnEndFrame();
         }
