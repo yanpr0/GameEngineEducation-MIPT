@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EntitySystem\ecsControl.h" />
+    <ClInclude Include="EntitySystem\ecsLogic.h" />
     <ClInclude Include="EntitySystem\ecsMesh.h" />
     <ClInclude Include="EntitySystem\ecsPhys.h" />
     <ClInclude Include="EntitySystem\ecsSystems.h" />
@@ -184,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntitySystem\ecsControl.cpp" />
+    <ClCompile Include="EntitySystem\ecsLogic.cpp" />
     <ClCompile Include="EntitySystem\ecsMesh.cpp" />
     <ClCompile Include="EntitySystem\ecsPhys.cpp" />
     <ClCompile Include="EntitySystem\EntitySystem.cpp" />

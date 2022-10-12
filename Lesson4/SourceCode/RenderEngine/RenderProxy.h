@@ -15,6 +15,10 @@ public:
 	}
 	void SetPosition(float position[3]);
 
+	bool IsVisible() const noexcept { return is_visible_; }
+	void SetVisibility(bool value) noexcept { is_visible_ = value; }
+
 	float m_vPosition[3];
+	bool is_visible_ = true;
 };
 

@@ -1,3 +1,4 @@
+#include "ecsLogic.h"
 #include "ecsMesh.h"
 #include "ecsSystems.h"
 #include "ecsPhys.h"
@@ -10,7 +11,7 @@ void register_ecs_mesh_systems(flecs::world &ecs)
 {
   static auto renderQuery = ecs.query<RenderEnginePtr>();
   ecs.system<const CubeMesh>()
-    .each([&](flecs::entity e, const CubeMesh& cubeMesh)
+    .each([&](flecs::entity e, const CubeMesh&)
     {
       renderQuery.each([&](RenderEnginePtr re)
       {

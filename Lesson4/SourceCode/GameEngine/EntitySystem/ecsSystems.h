@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include "RenderProxy.h"
 
 struct InputHandlerPtr
 {
@@ -9,3 +11,5 @@ struct RenderEnginePtr
 {
   class RenderEngine* ptr;
 };
+
+using FreeProxies = std::vector<RenderProxy*>;

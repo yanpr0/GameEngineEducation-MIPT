@@ -23,6 +23,8 @@ public:
 	IRenderData* GetRenderData() const { return m_pRenderData; }
 	void SetRenderData(IRenderData* renderData) { m_pRenderData = renderData; }
 
+	bool IsVisible() const noexcept { return m_pRenderProxy->IsVisible(); }
+
 protected:
 	RenderProxy* m_pRenderProxy;
 	IRenderData* m_pRenderData;

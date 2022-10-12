@@ -2,7 +2,7 @@
 
 #include "../RenderObject.h"
 
-namespace Cube
+namespace TinyCube
 {
 	struct PosColorVertex
 	{
@@ -13,10 +13,10 @@ namespace Cube
 	};
 };
 
-class RENDERENGINE_API CubeRenderObject final : public RenderObject
+class RENDERENGINE_API TinyCubeRenderObject final : public RenderObject
 {
 public:
-	CubeRenderObject(RenderProxy* pRenderProxy);
+	TinyCubeRenderObject(RenderProxy * pRenderProxy);
 
 	virtual void* GetVertices() const override { return (void*)s_cubeVertices; }
 	virtual UINT32 GetVerticesSize() const override { return sizeof(s_cubeVertices); }
@@ -26,16 +26,16 @@ public:
 	virtual std::string GetPsShaderName() const override { return "fs_cubes"; }
 
 private:
-	inline static const Cube::PosColorVertex s_cubeVertices[] =
+	inline static const TinyCube::PosColorVertex s_cubeVertices[] =
 	{
-		{-1.0f,  1.0f,  1.0f, 0xff000000 },
-		{ 1.0f,  1.0f,  1.0f, 0xff0000ff },
-		{-1.0f, -1.0f,  1.0f, 0xff00ff00 },
-		{ 1.0f, -1.0f,  1.0f, 0xff00ffff },
-		{-1.0f,  1.0f, -1.0f, 0xffff0000 },
-		{ 1.0f,  1.0f, -1.0f, 0xffff00ff },
-		{-1.0f, -1.0f, -1.0f, 0xffffff00 },
-		{ 1.0f, -1.0f, -1.0f, 0xffffffff },
+		{-0.15f,  0.15f,  0.15f, 0xff000000 },
+		{ 0.15f,  0.15f,  0.15f, 0xff0000ff },
+		{-0.15f, -0.15f,  0.15f, 0xff00ff00 },
+		{ 0.15f, -0.15f,  0.15f, 0xff00ffff },
+		{-0.15f,  0.15f, -0.15f, 0xffff0000 },
+		{ 0.15f,  0.15f, -0.15f, 0xffff00ff },
+		{-0.15f, -0.15f, -0.15f, 0xffffff00 },
+		{ 0.15f, -0.15f, -0.15f, 0xffffffff },
 	};
 
 	inline static const uint16_t s_cubeTriList[] =
@@ -54,4 +54,3 @@ private:
 		6, 3, 7,
 	};
 };
-

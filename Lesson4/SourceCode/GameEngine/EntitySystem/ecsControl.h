@@ -4,5 +4,7 @@
 struct Controllable {};
 struct JumpSpeed { float val; };
 
-void register_ecs_control_systems(flecs::world &ecs);
+struct Shooting {};
+struct Reloading { float left, max; };
 
+void register_ecs_control_systems(flecs::world &ecs);
