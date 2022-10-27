@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sol/sol.hpp>
+#include <string>
 #include <utility>
 
 #include "IScriptProxy.h"
@@ -20,7 +21,7 @@ public:
 	}
 
 	template <class T>
-	void AddVar(const char* var_name, T* var)
+	void AddVar(const char* var_name, T var)
 	{
 		lua_[var_name] = var;
 	}
@@ -33,6 +34,6 @@ public:
 
 private:
 	sol::state lua_;
-	const char* script_filename_;
+	std::string script_filename_;
 };
 

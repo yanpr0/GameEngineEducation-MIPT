@@ -36,7 +36,5 @@ struct FrictionAmount
   float val;
 };
 
-typedef float Speed;
-
 void register_ecs_phys_systems(flecs::world &ecs);
 

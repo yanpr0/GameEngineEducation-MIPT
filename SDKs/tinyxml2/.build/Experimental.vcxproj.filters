@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\gokan\_Gamedev\GameEngineEducation-MIPT\SDKs\tinyxml2\.build\CMakeFiles\c92dc930d7efb94cc2ffeb4d8564e41a\Experimental.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\gokan\_Gamedev\GameEngineEducation-MIPT\SDKs\tinyxml2\tinyxml2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\gokan\_Gamedev\GameEngineEducation-MIPT\SDKs\tinyxml2\.build\CMakeFiles\Experimental" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{624AF913-4ABC-393B-B49E-7E3EDF5D07EB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

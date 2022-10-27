@@ -34,6 +34,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     EntitySystem* entitySystem = new EntitySystem(renderEngine, inputHandler, scriptSystem);
 
+    entitySystem->SpawnEntities("movable_cube.xml");
+
     MSG msg = { 0 };
 
     timer.Start();

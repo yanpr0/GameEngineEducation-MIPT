@@ -1,12 +1,13 @@
-spd = 10.0
-
+speed = 10.0
 deltaVel = 0.0
 
-if left_move() then
-	deltaVel = deltaVel - spd
+if GetInputState(eIC_GoLeft) then
+	deltaVel = deltaVel - speed
 end
-if right_move() then
-	deltaVel = deltaVel + spd
+if GetInputState(eIC_GoRight) then
+	deltaVel = deltaVel + speed
 end
 
-set_vel_x(vel.x + deltaVel * delta_time())
+v = ecs:GetEntity(entity_id):GetVelocity()
+
+v.x = v.x + deltaVel * delta_time()

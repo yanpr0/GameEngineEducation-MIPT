@@ -1,0 +1,27 @@
+<entities>
+    <entity>
+        <position>
+            0.0,0.0,0.0
+        </position>
+        <velocity>
+            0.0,0.0,0.0
+        </velocity>
+        <gravity>
+            0.0,-9.8065,0.0
+        </gravity>
+        <bounce_plane>
+            0.0,1.0,0.0,0.0
+        </bounce_plane>
+        <bounciness>
+            0.3
+        </bounciness>
+        <friction>
+            0.9
+        </friction>
+        <scripts>
+            movable.lua
+            jumping.lua
+        </scripts>
+	<cube_mesh/>
+    </entity>
+</entities>

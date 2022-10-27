@@ -8,5 +8,5 @@ CScriptProxy::CScriptProxy(const char* script_filename) : script_filename_{ scri
 
 void CScriptProxy::ProcessScript()
 {
-    lua_.script_file(script_filename_);
+    lua_.script_file(script_filename_.c_str());
 }
